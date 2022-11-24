@@ -49,14 +49,15 @@ void loop() {
     else Serial.println("ON");
     
     /* Print Chanels Status */
+    /* Chanel 1 */
     Serial.print("CH1: ");
     printChanelStatus(analogRead(CH1_PIN));
     Serial.print(", ");
-  
+    /* Chanel 2 */
     Serial.print("CH2: ");
     printChanelStatus(analogRead(CH2_PIN));
     Serial.print(", ");
-  
+    /* Chanel 3 */
     Serial.print("CH3: ");
     printChanelStatus(analogRead(CH3_PIN));
     Serial.print('\n');
@@ -81,7 +82,8 @@ void loop() {
     }
     Serial.println("-------------------------");
  }
-
+ 
+  /* Parsing Serial */
   if(Serial.available() > 1) {
     char id = Serial.read();
     uint16_t value = Serial.parseInt();
@@ -95,9 +97,10 @@ void loop() {
       case 'l':
         if(!manual_switch) {
           Serial.print("Light of screen = ");
-          Serial.print(value);
+          uint8_t constrVal = constrain(value, 0, 100); 
+          Serial.print(constrVal);
           Serial.println("%");
-          analogWrite(PWM_BRIGHT_DISPLAY_PIN, map(constrain(value, 0, 100), 0, 100, 0, 255));
+          analogWrite(PWM_BRIGHT_DISPLAY_PIN, map(constrVal, 0, 100, 0, 255));
         }
         break;
 
@@ -114,8 +117,8 @@ void loop() {
         break;
     }
   }
-  
-  if(manual_switch) {
+
+  if(manual_switch) { // Управление яркостью с помощью потенциометра R10
     analogWrite(PWM_BRIGHT_DISPLAY_PIN, analogRead(BRIGHT_POT_PIN) / 4);
   }
 }

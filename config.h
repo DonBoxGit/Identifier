@@ -17,6 +17,11 @@
 #define BRIGHT_POT_PIN A0
 #define PWM_BRIGHT_DISPLAY_PIN 9
 
+// GND -- [ R2 ] -- A0 -- [ R1 ] -- VIN
+#define VA 5.0        // Напряжение на пине 5V (зависит от стабилизатора)
+#define DIV_R1 10000  // Точное значение 10 кОм резистора
+#define DIV_R2 4700   // Точное значение 4.7 кОм резистора
+
 #define NC_VALUE 1023
 #define S1_VALUE 340
 #define S2_VALUE 630
@@ -39,10 +44,5 @@
 #define B2_MAX B2_VALUE + RANGE_COEFF
 #define B3_MIN B3_VALUE - RANGE_COEFF
 #define B3_MAX B3_VALUE + RANGE_COEFF
-
-// GND -- [ R2 ] -- A0 -- [ R1 ] -- VIN
-#define VA 5.0        // Напряжение на пине 5V (зависит от стабилизатора)
-#define DIV_R1 10000  // Точное значение 10 кОм резистора
-#define DIV_R2 4700   // Точное значение 4.7 кОм резистора
 
 #endif /* _CONFIG_H_ */
