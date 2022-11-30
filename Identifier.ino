@@ -34,6 +34,7 @@ static bool manual_switch = false;
 
 void loop() {
   sensor1.requestTemp(); // Запрос температуры
+  
   if (echoDelay.ready()) {
 
     /* Print Regime Status */
