@@ -14,7 +14,7 @@ class Timer {
     void resetCount(void);
 
   private:
-    uint32_t _tmr = 0;
+    uint32_t _tmr = millis();
     uint16_t _period;
 };
 

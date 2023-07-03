@@ -8,7 +8,7 @@
 #define BAT2_PIN  A2
 #define TERM1_PIN 3
 #define TERM2_PIN 4
-#define FAN1_PIN  5
+#define FAN1_PWM_PIN  5
 #define FAN2_PIN  6
 
 #define REGIME_PIN  7
@@ -29,7 +29,9 @@
 #define B1_VALUE 810
 #define B2_VALUE 840
 #define B3_VALUE 878
+
 #define RANGE_COEFF 10
+
 #define NC_MIN NC_VALUE - RANGE_COEFF
 #define NC_MAX NC_VALUE + RANGE_COEFF
 #define S1_MIN S1_VALUE - RANGE_COEFF

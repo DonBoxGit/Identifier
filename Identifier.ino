@@ -26,7 +26,7 @@ void setup() {
   /* Initialization Output Pins */
   pinMode(REGIME_PIN, OUTPUT);
   pinMode(PWM_BRIGHT_DISPLAY_PIN, OUTPUT);
-  pinMode(FAN1_PIN, OUTPUT);
+  pinMode(FAN1_PWM_PIN, OUTPUT);
   pinMode(FAN2_PIN, OUTPUT);
 }
 
@@ -88,7 +88,7 @@ void loop() {
         if (value == 4) digitalWrite(REGIME_PIN, 0);
         break;
 
-      case 'l':
+      case 'd':
         if (!manual_switch) {
           Serial.print("Light of screen = ");
           uint8_t constrVal = constrain(value, 0, 100);
@@ -109,6 +109,14 @@ void loop() {
           Serial.println("ON");
         }
         break;
+
+        case 'f':
+          Serial.print("Fan power = ");
+          uint8_t constrValFan = constrain(value, 0, 100);
+          Serial.print(constrValFan);
+          Serial.println("%");
+          analogWrite(FAN1_PWM_PIN, map(constrValFan, 0, 100, 0, 255));
+          break;
     }
   }
 
